@@ -1,0 +1,60 @@
+.breaker {
+    width: 100%;
+    height: 1px;
+    background-color: $light-grey;
+}
+
+.btn {
+    background-color: $white;
+    outline: none;
+    border: none;
+    color: $green;
+    padding: 5px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: $transition;
+
+    &.xl {
+        padding: 10px 40px;
+    }
+    
+    &:hover {
+        background-color: $cream;
+    }
+
+    &.outline {
+        outline: $green solid 1px;
+
+        &.black {
+            outline: $black solid 1px;
+            color: black;
+        }
+
+        &.selected {
+            color: $white;
+            background-color: $green;
+
+            &:hover {
+                background-color: $green;
+            }
+        }
+
+        &:hover {
+            background-color: $light-grey;
+        }
+
+    }
+}
+
+input {
+    border: none;
+    background-color: $dark-grey;
+    border-radius: $border-radius;
+    padding: 10px;
+    color: $green;
+
+    &:focus{
+        outline: none;
+    }
+}

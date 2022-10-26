@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mentor: one
+  mentee: one
+  topic: one
+  community: one
+  description: MyString
+  isEstablished: false
+
+two:
+  mentor: two
+  mentee: two
+  topic: two
+  community: two
+  description: MyString
+  isEstablished: false
