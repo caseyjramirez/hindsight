@@ -12,7 +12,7 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create application" do
     assert_difference("Application.count") do
-      post applications_url, params: { application: { applicant_id: @application.applicant_id, description: @application.description, isRejected: @application.isRejected, relationship_id: @application.relationship_id } }, as: :json
+      post applications_url, params: { application: { description: @application.description, isRejected: @application.isRejected, mentee_id: @application.mentee_id, relationship_id: @application.relationship_id } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update application" do
-    patch application_url(@application), params: { application: { applicant_id: @application.applicant_id, description: @application.description, isRejected: @application.isRejected, relationship_id: @application.relationship_id } }, as: :json
+    patch application_url(@application), params: { application: { description: @application.description, isRejected: @application.isRejected, mentee_id: @application.mentee_id, relationship_id: @application.relationship_id } }, as: :json
     assert_response :success
   end
 

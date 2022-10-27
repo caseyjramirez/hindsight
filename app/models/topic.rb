@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
   belongs_to :community
-  has_many :topics
+  has_many :relationships
   
 end

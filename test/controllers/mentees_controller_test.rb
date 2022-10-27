@@ -12,7 +12,7 @@ class MenteesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create mentee" do
     assert_difference("Mentee.count") do
-      post mentees_url, params: { mentee: { age: @mentee.age, community_id: @mentee.community_id, description: @mentee.description, email: @mentee.email, name: @mentee.name, password_digest: @mentee.password_digest, phone_numer: @mentee.phone_numer } }, as: :json
+      post mentees_url, params: { mentee: { age: @mentee.age, community_id: @mentee.community_id, description: @mentee.description, email: @mentee.email, first_name: @mentee.first_name, last_name: @mentee.last_name, password_digest: @mentee.password_digest, phone_number: @mentee.phone_number } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class MenteesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update mentee" do
-    patch mentee_url(@mentee), params: { mentee: { age: @mentee.age, community_id: @mentee.community_id, description: @mentee.description, email: @mentee.email, name: @mentee.name, password_digest: @mentee.password_digest, phone_numer: @mentee.phone_numer } }, as: :json
+    patch mentee_url(@mentee), params: { mentee: { age: @mentee.age, community_id: @mentee.community_id, description: @mentee.description, email: @mentee.email, first_name: @mentee.first_name, last_name: @mentee.last_name, password_digest: @mentee.password_digest, phone_number: @mentee.phone_number } }, as: :json
     assert_response :success
   end
 

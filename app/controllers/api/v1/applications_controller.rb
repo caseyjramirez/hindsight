@@ -46,6 +46,6 @@ class Api::V1::ApplicationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def application_params
-      params.require(:application).permit(:relationship_id, :applicant_id, :description, :isRejected)
+      params.require(:application).permit(:relationship_id, :mentee_id, :description, :isRejected)
     end
 end

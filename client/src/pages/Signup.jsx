@@ -3,16 +3,15 @@ import UserInfoInput from '../components/reusables/UserInfoInput';
 
 function Signup() {
     const [roleType, setRoleType] = useState('mentee')
-    const [confirmPassword, setConfirmPassword] = useState('')
     const [userInfo, setUserInfo] = useState({
         firstName: '',
         lastName: '',
         email: '',
         phone: '',
-        password: ''
+        password: '',
+        password_confirmation: ''
     })
-    const { firstName, lastName, email, phone, password } = userInfo;
-    console.log(userInfo);
+    const { firstName, lastName, email, phone, password, password_confirmation } = userInfo;
 
     function renderButtonClasses(input) {
         if(roleType === input) {
@@ -35,7 +34,7 @@ function Signup() {
     return (
         <div className="container">
             <div className="center">
-                <div className="sign-up-modal">
+                <div className="sign-up-login-modal">
                     <h1 className="mb-20">Sign up to be a:</h1>
                     
                     {/* signup buttons */}
@@ -47,7 +46,7 @@ function Signup() {
                     </div>
 
                     {/* line */}
-                    <div className='signup-break mb-20'></div>
+                    <div className='modal-break mb-20'></div>
 
                     <div className='flex'>
                         <div className="mr-20">
@@ -102,8 +101,9 @@ function Signup() {
                         <UserInfoInput
                             label="Confirm Password"
                             type='password'
-                            onChange={e => setConfirmPassword(e.target.value)}
-                            value={confirmPassword}
+                            onChange={handleChange}
+                            name="password_confirmation"
+                            value={password_confirmation}
                         />
                     </div>
                      <button onClick={handleSubmit} className='btn outline black xl'>Signup</button>

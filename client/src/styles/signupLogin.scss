@@ -1,4 +1,4 @@
-.sign-up-modal {
+.sign-up-login-modal {
     padding: 40px 45px;
     background-color: $light-grey;
     color: $green;
@@ -7,7 +7,7 @@
     flex-direction: column;
     align-items: center;
 
-    .signup-break {
+    .modal-break {
         width: 100%;
         height: 1px;
         background-color: $dark-grey;
@@ -15,10 +15,6 @@
 }
 
 .user-info-input {
-    p {
-
-    }
-
     input {
         width: $signup-width;
     }

@@ -12,7 +12,7 @@ class MentorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create mentor" do
     assert_difference("Mentor.count") do
-      post mentors_url, params: { mentor: { age: @mentor.age, community_id: @mentor.community_id, description: @mentor.description, email: @mentor.email, name: @mentor.name, password_digest: @mentor.password_digest, phone_numer: @mentor.phone_numer } }, as: :json
+      post mentors_url, params: { mentor: { age: @mentor.age, community_id: @mentor.community_id, description: @mentor.description, email: @mentor.email, first_name: @mentor.first_name, last_name: @mentor.last_name, password_digest: @mentor.password_digest, phone_number: @mentor.phone_number } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class MentorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update mentor" do
-    patch mentor_url(@mentor), params: { mentor: { age: @mentor.age, community_id: @mentor.community_id, description: @mentor.description, email: @mentor.email, name: @mentor.name, password_digest: @mentor.password_digest, phone_numer: @mentor.phone_numer } }, as: :json
+    patch mentor_url(@mentor), params: { mentor: { age: @mentor.age, community_id: @mentor.community_id, description: @mentor.description, email: @mentor.email, first_name: @mentor.first_name, last_name: @mentor.last_name, password_digest: @mentor.password_digest, phone_number: @mentor.phone_number } }, as: :json
     assert_response :success
   end
 

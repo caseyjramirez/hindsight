@@ -1,4 +1,4 @@
 class Application < ApplicationRecord
   belongs_to :relationship
-  belongs_to :applicant
+  belongs_to :mentee
 end

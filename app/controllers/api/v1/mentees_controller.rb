@@ -46,6 +46,6 @@ class Api::V1::MenteesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mentee_params
-      params.require(:mentee).permit(:name, :age, :email, :description, :phone_numer, :community_id, :password_digest)
+      params.require(:mentee).permit(:first_name, :last_name, :age, :email, :phone_number, :description, :community_id, :password_digest)
     end
 end

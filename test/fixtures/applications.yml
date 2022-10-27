@@ -2,12 +2,12 @@
 
 one:
   relationship: one
-  applicant: one
+  mentee: one
   description: MyString
   isRejected: false
 
 two:
   relationship: two
-  applicant: two
+  mentee: two
   description: MyString
   isRejected: false
