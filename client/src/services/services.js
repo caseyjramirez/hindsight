@@ -6,7 +6,8 @@ import {
     loginAPI,
     authorizeUserAPI,
     getRelationshipAPI,
-    topicAPI
+    topicAPI,
+    relationshipAPI
 } from "./apis";
 
 async function createMentor(body) {
@@ -78,11 +79,24 @@ async function getTopics() {
     }
 }
 
+async function createRelationship(body) {
+    try {
+        return await axios({
+            method: 'post',
+            url: relationshipAPI,
+            data: body
+        })
+    } catch (error) {
+        return error
+    }
+}
+
 export {
     createMentor,
     createMentee,
     login,
     authorizeUser,
     getRelationship,
-    getTopics
+    getTopics,
+    createRelationship
 }

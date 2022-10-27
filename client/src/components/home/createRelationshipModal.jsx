@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { getTopics } from '../../services/services'
+import { getTopics, createRelationship } from '../../services/services'
 
-function CreateRelationshipModal({ isOpen, onClose, mentorId, communityId }) {
+function CreateRelationshipModal({ isOpen, onClose, createNewRelationship, mentorId, communityId }) {
     const [topics, setTopics] = useState([])
     const [relationship, setRelationship] = useState({
         mentor_id: mentorId,
         topic_id: null,
         community_id: communityId,
         isEstablished: false,
-        description: null
+        description: ''
     })
 
     useEffect(() => {
@@ -29,8 +29,14 @@ function CreateRelationshipModal({ isOpen, onClose, mentorId, communityId }) {
         return isOpen ? 'create-relationship-modal' : 'create-relationship-modal hidden';
     }
 
-    function onSave() {
-        console.log(relationship);
+    async function onSave() {
+        const response = await createRelationship(relationship)
+        if(response.status === 201) {
+            createNewRelationship(response.data)
+            onClose()
+        } else {
+            console.log('Something went wrong!');
+        }
     }
 
     const { description } = relationship

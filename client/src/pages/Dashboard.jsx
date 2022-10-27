@@ -4,11 +4,11 @@ import stockProfilePic from '../assets/stockProfilePic.jpg'
 import RelationshipCard from '../components/reusables/relationshipCard';
 import CreateRelationshipModal from '../components/home/createRelationshipModal';
 
-function Dashboard({ user }) {
+function Dashboard({ user, createNewRelationship, relationships }) {
     const navigate = useNavigate();
     const [isCreateingNewRelationship, setIsCreateingNewRelationship] = useState(false)
 
-    const { first_name, last_name, email, phone_number, community, relationships, role, id } = user;
+    const { first_name, last_name, email, phone_number, community, role, id } = user;
 
     function handleRelationshipClick(id) {
         navigate(`/relationship/${id}`)
@@ -19,6 +19,7 @@ function Dashboard({ user }) {
             <CreateRelationshipModal 
                 isOpen={isCreateingNewRelationship}
                 onClose={() => setIsCreateingNewRelationship(false)}
+                createNewRelationship={createNewRelationship}
                 mentorId={id}
                 communityId={community.id}
             />

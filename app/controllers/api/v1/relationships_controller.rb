@@ -17,7 +17,7 @@ end
   # POST /relationships
   def create
     relationship = Relationship.create!(relationship_params)
-    render json: production, status: :created
+    render json: relationship, status: :created
   end 
 
   # PATCH/PUT /relationships/1

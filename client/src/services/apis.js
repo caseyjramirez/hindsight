@@ -1,6 +1,7 @@
 const mentorAPI = `/mentors`
 const menteeAPI = `/mentees`
 const topicAPI = `/topics`
+const relationshipAPI = `/relationships`
 const loginAPI = `/login`
 const authorizeUserAPI = `/authorized_user`
 const getRelationshipAPI = id => `/relationships/${id}`
@@ -11,5 +12,6 @@ export {
     loginAPI,
     authorizeUserAPI,
     getRelationshipAPI,
-    topicAPI
+    topicAPI,
+    relationshipAPI
 }

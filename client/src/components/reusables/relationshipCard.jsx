@@ -1,13 +1,17 @@
 
 function RelationshipCard({ data, onClick }) {
-    const { mentee, community, topic, id } = data
+    const { mentee, community, topic, id, isEstablished } = data
+    
+    function renderTitle() {
+        return isEstablished ? `${mentee.first_name} ${mentee.last_name}` : 'Pending Applicants'
+    }
+
     return (
         <div className="relationship-object">
             <div className="modal-break black mb-10"></div>
-            {/* <div className="mb-10"></div> */}
             <div className="container">
                 <div className='flex space-between mb-5'>
-                    <h1 onClick={() => onClick(id)}>{mentee.first_name} {mentee.last_name}</h1>
+                    <h1 onClick={() => onClick(id)}>{renderTitle()}</h1>
                     <div>
                         <div className='tag'>
                             <p>Established</p>

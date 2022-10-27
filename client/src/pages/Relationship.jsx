@@ -16,16 +16,19 @@ function Relationship({ user }) {
         .then(d => setRelationship(d.data))
     }, [])
     
+    function renderTitle() {
+        return relationship.isEstablished? `Relationship With ${mentee.first_name}` : "View Applicants";
+    }
+    
+    
     const { mentee, topic, community } = relationship
     console.log(relationship);
-    
-
     return (
         <div className='dashboard relationship'>
             <div className="container">
                 <div className="dashboard-container">
                     <div className="spacer-40"></div>
-                    <h1>Relationship With {mentee.first_name}</h1>
+                    <h1>{renderTitle()}</h1>
 
                 </div>
             </div>

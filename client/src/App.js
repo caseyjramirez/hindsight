@@ -11,12 +11,22 @@ import { authorizeUser } from './services/services';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
+  const [relationships, setRelationships] = useState([])
 
   useEffect(() => {
     authorizeUser()
-    .then(d => setCurrentUser(d.data))
+    .then(d => {
+      setCurrentUser(d.data)
+      setRelationships(d.data.relationships)
+    })
   }, [])
 
+  function addRelationship(newRelationship) {
+    console.log(newRelationship);
+    setRelationships(relationships => [...relationships, newRelationship])
+  }
+  
+  console.log(relationships);
 
   return (
     <div className="App">
@@ -27,7 +37,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup setUser={setCurrentUser} />} />
         <Route path="/login" element={<Login setUser={setCurrentUser} />} />
-        <Route path="/home" element={<Dashboard user={currentUser} />} />
+        <Route path="/home" element={<Dashboard relationships={relationships} user={currentUser} createNewRelationship={addRelationship}/>} />
         <Route path="/relationship/:relationshipId" element={<Relationship user={currentUser} />} />
         <Route path="/testing" element={<TestingCookies />} />
 
