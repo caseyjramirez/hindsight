@@ -8,7 +8,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     # once this is moved on a prod server this will have to chage
-    origins "http://localhost:3001"
+    origins "*"
 
     resource "*",
       headers: :any,

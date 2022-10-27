@@ -5,6 +5,8 @@
 @import './spacing.scss';
 @import './home.scss';
 @import './signupLogin.scss';
+@import './dashboard.scss';
+@import './reusables.scss';
 
 
 html {
@@ -29,6 +31,10 @@ a {
 
 .bold {
     font-weight: bold;
+}
+
+.fw-regular {
+    font-weight: normal;
 }
 
 .container {

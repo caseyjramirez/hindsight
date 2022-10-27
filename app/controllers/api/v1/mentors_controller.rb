@@ -23,7 +23,8 @@ class Api::V1::MentorsController < ApplicationController
       community_id: Community.first.id,
       password: params[:password],
     )
-
+    
+    session[:user_id] = mentor.id
     render json: mentor, status: :created
   end
 

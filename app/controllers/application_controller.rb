@@ -6,6 +6,12 @@ class ApplicationController < ActionController::API
     # before_action
     before_action :authorized_user
 
+
+    def hello_world
+        session[:count] = (session[:count] || 0) + 1
+        render json: { count: session[:count] }
+      end
+
     # current_user and authorized_user 
     def current_user
         mentee = Mentee.find_by(id: session[:user_id])
@@ -16,6 +22,7 @@ class ApplicationController < ActionController::API
 
     def authorized_user
         render json: {error: "Not Authorized"}, status: :unauthorized unless current_user
+        # render json: {error: "Not Authorized"}, status: :unauthorized
     end
 
     private

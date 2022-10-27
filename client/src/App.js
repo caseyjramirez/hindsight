@@ -4,24 +4,36 @@ import Navbar from './components/reusables/Navbar'
 import Home from "./pages/Home";
 import Signup from './pages/Signup'
 import Login from "./pages/Login";
+import Dashboard from './pages/Dashboard';
+import TestingCookies from './pages/TestingCookies';
 import { authorizeUser } from './services/services';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
 
-  useEffect(() => {
-    authorizeUser()
-    .then(d => console.log(d))
-  }, [])
   console.log(currentUser);
+
+  useEffect(() => {
+    console.log('called')
+    authorizeUser()
+    .then(d => setCurrentUser(d.data))
+  }, [])
+
+
   return (
     <div className="App">
       <Navbar />
+      {
+        !currentUser ? <Login setUser={setCurrentUser} /> : 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup setUser={setCurrentUser} />} />
+        <Route path="/login" element={<Login setUser={setCurrentUser} />} />
+        <Route path="/home" element={<Dashboard user={currentUser} />} />
+        <Route path="/testing" element={<TestingCookies />} />
+
       </Routes>
+      }
     </div>
   );
 }

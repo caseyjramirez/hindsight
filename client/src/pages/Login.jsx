@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import UserInfoInput from '../components/reusables/UserInfoInput';
 import { login } from '../services/services';
 
-function Login() {
+function Login({ setUser }) {
     const navigate = useNavigate();
 
     const [loginInfo, setLoginInfo] = useState({
@@ -18,8 +18,9 @@ function Login() {
 
     async function handleSubmit() {
         const data = await login(loginInfo)
-        console.log(data);
+        // console.log(data);
         if(data.status === 200) {
+            setUser(data.data)
             navigate('/home')
         } else {
             console.log(data);
@@ -56,7 +57,7 @@ function Login() {
                         value={password}
                     />
 
-                    <button onClick={handleSubmit} className='btn outline black xl'>Signup</button>
+                    <button onClick={handleSubmit} className='btn outline black xl'>Login</button>
                 </div>
             </div>
         </div>

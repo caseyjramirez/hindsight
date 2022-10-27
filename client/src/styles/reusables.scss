@@ -1,0 +1,23 @@
+.searchbar {
+    p {
+        color: $green;
+        margin-left: 10px;
+    }
+    input {
+        width: 100%;
+        border: 1px solid $darker-grey;
+        background-color: transparent;
+        color: $black;
+    }
+}
+
+.tag {
+    background-color: $green;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 7px;
+
+    &.status-tag {
+
+    }
+}

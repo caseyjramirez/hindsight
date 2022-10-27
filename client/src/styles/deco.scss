@@ -28,7 +28,12 @@
 
         &.black {
             outline: $black solid 1px;
-            color: black;
+            color: $black;
+        }
+
+        &.grey {
+            outline: $darker-grey solid 1px;
+            color: $darker-grey;
         }
 
         &.selected {

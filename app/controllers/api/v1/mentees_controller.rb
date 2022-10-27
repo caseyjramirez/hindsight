@@ -23,7 +23,8 @@ class Api::V1::MenteesController < ApplicationController
       community_id: Community.first.id,
       password: params[:password],
     )
-
+    
+    session[:user_id] = mentee.id
     render json: mentee, status: :created
   end
 

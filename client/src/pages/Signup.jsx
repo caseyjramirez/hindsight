@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserInfoInput from '../components/reusables/UserInfoInput';
 import { createMentor, createMentee } from '../services/services'
 
-function Signup() {
+function Signup({ setUser }) {
+    const navigate = useNavigate();
+
     const [roleType, setRoleType] = useState('mentee')
     const [userInfo, setUserInfo] = useState({
         first_name: '',
@@ -39,7 +42,11 @@ function Signup() {
         console.log(data);
 
         if(data.status === 201) {
-            console.log('all good');
+            setUser(data.data)
+            navigate('/home');
+
+        } else {
+            console.log('error', data);
         }
     }
 
