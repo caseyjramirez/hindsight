@@ -1,5 +1,5 @@
 class RelationshipSerializer < ActiveModel::Serializer
-  attributes :id, :description, :isEstablished, :mentee, :community
+  attributes :id, :description, :isEstablished, :mentee, :community, :topic
   belongs_to :topic
   # belongs_to :mentee
   belongs_to :community

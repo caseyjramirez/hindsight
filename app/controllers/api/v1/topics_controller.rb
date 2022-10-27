@@ -2,11 +2,9 @@ class Api::V1::TopicsController < ApplicationController
   before_action :set_topic, only: %i[ show update destroy ]
 
   # GET /topics
-  def index
-    @topics = Topic.all
-
-    render json: @topics
-  end
+  def index 
+    render json: Topic.all, status: :ok
+end 
 
   # GET /topics/1
   def show

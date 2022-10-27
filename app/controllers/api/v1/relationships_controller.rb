@@ -10,19 +10,15 @@ class Api::V1::RelationshipsController < ApplicationController
 
   # GET /relationships/1
   def show
-    render json: @relationship
-  end
+    relationship = Relationship.find(params[:id])
+    render json: relationship, status: :ok
+end 
 
   # POST /relationships
   def create
-    @relationship = Relationship.new(relationship_params)
-
-    if @relationship.save
-      render json: @relationship, status: :created, location: @relationship
-    else
-      render json: @relationship.errors, status: :unprocessable_entity
-    end
-  end
+    relationship = Relationship.create!(relationship_params)
+    render json: production, status: :created
+  end 
 
   # PATCH/PUT /relationships/1
   def update

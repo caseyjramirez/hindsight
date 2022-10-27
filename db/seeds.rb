@@ -6,7 +6,7 @@ c1 = Community.create(
     description: "An inclusive community for woodworkers from all walks of life!",
 )
 
-1.times do
+5.times do
     Topic.create(
         name: Faker::Hobby.activity,
         description: Faker::Quote.most_interesting_man_in_the_world,
@@ -14,7 +14,7 @@ c1 = Community.create(
     )
 end
 
-3.times do
+10.times do
     Mentor.create(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,

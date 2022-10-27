@@ -4,6 +4,15 @@
     background-color: $light-grey;
     padding-top: 160px;
 
+    &.relationship {
+        padding-top: 0px;
+        
+
+        .dashboard-container{
+            border-radius: 0 0 0 0;
+        }
+    }
+
     h1 {
         color: $black;
     }
@@ -61,5 +70,19 @@
 .relationship-container {
     .black {
         background-color: $black;
+    }
+
+    .relationship-object {
+        h1 {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    p {
+        color: $black;
     }
 }

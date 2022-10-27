@@ -1,10 +1,27 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import stockProfilePic from '../assets/stockProfilePic.jpg'
 import RelationshipCard from '../components/reusables/relationshipCard';
+import CreateRelationshipModal from '../components/home/createRelationshipModal';
 
 function Dashboard({ user }) {
-    const { first_name, last_name, email, phone_number, community, relationships, role } = user;
+    const navigate = useNavigate();
+    const [isCreateingNewRelationship, setIsCreateingNewRelationship] = useState(false)
+
+    const { first_name, last_name, email, phone_number, community, relationships, role, id } = user;
+
+    function handleRelationshipClick(id) {
+        navigate(`/relationship/${id}`)
+    }
 
     return (
+        <div>
+            <CreateRelationshipModal 
+                isOpen={isCreateingNewRelationship}
+                onClose={() => setIsCreateingNewRelationship(false)}
+                mentorId={id}
+                communityId={community.id}
+            />
             <div className="dashboard">
                 <div className="container">
                     <div className="dashboard-container">
@@ -24,15 +41,20 @@ function Dashboard({ user }) {
 
                         <div className="modal-break break mb-40"></div>
                         <div className='flex searchbar mb-10'>
-                            <button className='btn outline grey create-posting mr-20' >Create New Relationship</button>
+                            <button onClick={() => setIsCreateingNewRelationship(true)} className='btn outline grey create-posting mr-20' >Create New Relationship</button>
                             <input type="text" />
                         </div>
 
                         <div className='relationship-container'>
-                            <RelationshipCard
-                                data={relationships[0]}
-                            />
-                        </div>
+                            {
+                                relationships.map(relationship => {
+                                    return <RelationshipCard data={relationship} onClick={handleRelationshipClick}/>
+                                })
+                            }
+                            <div className="modal-break black mt-10"></div>
+                       </div>
+
+                       <div className="footer"></div>
 
 
 
@@ -40,6 +62,7 @@ function Dashboard({ user }) {
                 </div>
 
             </div>
+        </div>
     );
 }
 

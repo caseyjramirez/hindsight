@@ -4,9 +4,9 @@ Rails.application.routes.draw do
       resources :applications
       resources :mentors, only: [:create, :index, :show]
       resources :mentees, only: [:create]
-      resources :relationships
-      resources :topics
-      resources :communities
+      resources :relationships, only: [:show, :create]
+      resources :topics, only: [:index]
+      resources :communities, only: [:show]
 
       # custom routes for loggin in and ensuring user is logged in.
       post '/login', to: 'sessions#login'
