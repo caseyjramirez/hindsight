@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import UserInfoInput from '../components/reusables/UserInfoInput';
+import { createMentor, createMentee } from '../services/services'
 
 function Signup() {
     const [roleType, setRoleType] = useState('mentee')
     const [userInfo, setUserInfo] = useState({
-        firstName: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
         email: '',
-        phone: '',
+        phone_number: '',
         password: '',
         password_confirmation: ''
     })
-    const { firstName, lastName, email, phone, password, password_confirmation } = userInfo;
+    const { first_name, last_name, email, phone_number, password, password_confirmation } = userInfo;
 
     function renderButtonClasses(input) {
         if(roleType === input) {
@@ -26,8 +27,20 @@ function Signup() {
         setUserInfo({ ...userInfo, [name]: value })
     }
 
-    function handleSubmit() {
+    async function handleSubmit() {
+        let data;
+        
+        if(roleType === 'mentor') {
+            data = await createMentor(userInfo)
+        } else {
+            data = await createMentee(userInfo)
+        }
 
+        console.log(data);
+
+        if(data.status === 201) {
+            console.log('all good');
+        }
     }
 
 
@@ -53,16 +66,16 @@ function Signup() {
                         <UserInfoInput
                             label="First Name"
                             onChange={handleChange}
-                            name="firstName"
-                            value={firstName}
+                            name="first_name"
+                            value={first_name}
                         />
                         </div>
 
                         <UserInfoInput
                             label="Last Name"
                             onChange={handleChange}
-                            name="lastName"
-                            value={lastName}
+                            name="last_name"
+                            value={last_name}
                         />
 
                     </div>
@@ -80,9 +93,9 @@ function Signup() {
                         <UserInfoInput
                             label="Phone (optional)"
                             onChange={handleChange}
-                            name="phone"
                             type='number'
-                            value={phone}
+                            name="phone_number"
+                            value={phone_number}
                         />
                     </div>
 

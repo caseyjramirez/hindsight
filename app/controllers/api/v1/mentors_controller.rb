@@ -15,13 +15,16 @@ class Api::V1::MentorsController < ApplicationController
 
   # POST /mentors
   def create
-    @mentor = Mentor.new(mentor_params)
+    mentor = Mentor.create!(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      phone_number: params[:phone_number],
+      community_id: Community.first.id,
+      password: params[:password],
+    )
 
-    if @mentor.save
-      render json: @mentor, status: :created, location: @mentor
-    else
-      render json: @mentor.errors, status: :unprocessable_entity
-    end
+    render json: mentor, status: :created
   end
 
   # PATCH/PUT /mentors/1
@@ -46,6 +49,6 @@ class Api::V1::MentorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mentor_params
-      params.require(:mentor).permit(:first_name, :last_name, :email, :age, :phone_number, :description, :community_id, :password_digest)
+      params.require(:mentor).permit(:first_name, :last_name, :email, :age, :phone_number, :description, :community_id, :password)
     end
 end

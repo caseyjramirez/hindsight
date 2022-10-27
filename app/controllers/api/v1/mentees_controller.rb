@@ -15,13 +15,16 @@ class Api::V1::MenteesController < ApplicationController
 
   # POST /mentees
   def create
-    @mentee = Mentee.new(mentee_params)
+    mentee = Mentee.create!(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      phone_number: params[:phone_number],
+      community_id: Community.first.id,
+      password: params[:password],
+    )
 
-    if @mentee.save
-      render json: @mentee, status: :created, location: @mentee
-    else
-      render json: @mentee.errors, status: :unprocessable_entity
-    end
+    render json: mentee, status: :created
   end
 
   # PATCH/PUT /mentees/1

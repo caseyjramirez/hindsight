@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserInfoInput from '../components/reusables/UserInfoInput';
+import { login } from '../services/services';
 
 function Login() {
+    const navigate = useNavigate();
+
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
@@ -12,7 +16,14 @@ function Login() {
         setLoginInfo({ ...loginInfo, [name]: value })
     }
 
-    function handleSubmit() {
+    async function handleSubmit() {
+        const data = await login(loginInfo)
+        console.log(data);
+        if(data.status === 200) {
+            navigate('/home')
+        } else {
+            console.log(data);
+        }
         
     }
 
