@@ -11,39 +11,52 @@ import { authorizeUser } from './services/services';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
-  const [relationships, setRelationships] = useState([])
+  console.log(currentUser);
 
   useEffect(() => {
+    console.log('called');
     authorizeUser()
     .then(d => {
       setCurrentUser(d.data)
-      setRelationships(d.data.relationships)
     })
   }, [])
 
   function addRelationship(newRelationship) {
     console.log(newRelationship);
-    setRelationships(relationships => [...relationships, newRelationship])
+    setCurrentUser({...currentUser, relationships: [...currentUser.relationships, newRelationship]})
   }
   
-  console.log(relationships);
+  // console.log(currentUser);
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar isLoggedIn={currentUser} logUserOut={() => setCurrentUser(false)} />
       {
-        !currentUser ? <Login setUser={setCurrentUser} /> : 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup setUser={setCurrentUser} />} />
         <Route path="/login" element={<Login setUser={setCurrentUser} />} />
-        <Route path="/home" element={<Dashboard relationships={relationships} user={currentUser} createNewRelationship={addRelationship}/>} />
+        <Route path="/home" element={<Dashboard user={currentUser} createNewRelationship={addRelationship}/>} />
         <Route path="/relationship/:relationshipId" element={<Relationship user={currentUser} />} />
         <Route path="/testing" element={<TestingCookies />} />
-
       </Routes>
       }
     </div>
+    // <div className="App">
+    //   <Navbar />
+    //   {
+    //     !currentUser ? <Login setUser={setCurrentUser} /> : 
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+    //     <Route path="/signup" element={<Signup setUser={setCurrentUser} />} />
+    //     <Route path="/login" element={<Login setUser={setCurrentUser} />} />
+    //     <Route path="/home" element={<Dashboard relationships={relationships} user={currentUser} createNewRelationship={addRelationship}/>} />
+    //     <Route path="/relationship/:relationshipId" element={<Relationship user={currentUser} />} />
+    //     <Route path="/testing" element={<TestingCookies />} />
+
+    //   </Routes>
+    //   }
+    // </div>
   );
 }
 

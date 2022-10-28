@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import stockProfilePic from '../assets/stockProfilePic.jpg'
 import RelationshipCard from '../components/reusables/relationshipCard';
 import CreateRelationshipModal from '../components/home/createRelationshipModal';
 
-function Dashboard({ user, createNewRelationship, relationships }) {
+function Dashboard({ user, createNewRelationship }) {
     const navigate = useNavigate();
+
     const [isCreateingNewRelationship, setIsCreateingNewRelationship] = useState(false)
+    const { first_name, last_name, email, phone_number, relationships, community, role, id } = user;
 
-    const { first_name, last_name, email, phone_number, community, role, id } = user;
-
+    
+    console.log(relationships);
     function handleRelationshipClick(id) {
         navigate(`/relationship/${id}`)
     }
@@ -23,6 +25,7 @@ function Dashboard({ user, createNewRelationship, relationships }) {
                 mentorId={id}
                 communityId={community.id}
             />
+
             <div className="dashboard">
                 <div className="container">
                     <div className="dashboard-container">

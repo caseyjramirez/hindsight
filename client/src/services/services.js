@@ -4,6 +4,7 @@ import {
     mentorAPI, 
     menteeAPI, 
     loginAPI,
+    logoutAPI,
     authorizeUserAPI,
     getRelationshipAPI,
     topicAPI,
@@ -40,6 +41,17 @@ async function login(body) {
             method: 'post',
             url: loginAPI,
             data: body
+        })
+    } catch (error) {
+        return error
+    }
+}
+
+async function logout() {
+    try {
+        return await axios({
+            method: 'delete',
+            url: logoutAPI
         })
     } catch (error) {
         return error
@@ -95,6 +107,7 @@ export {
     createMentor,
     createMentee,
     login,
+    logout,
     authorizeUser,
     getRelationship,
     getTopics,

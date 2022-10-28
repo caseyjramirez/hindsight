@@ -1,5 +1,6 @@
 class Api::V1::MentorsController < ApplicationController
   before_action :set_mentor, only: %i[ show update destroy ]
+  skip_before_action :authorized_user, only: [:create]
 
   # GET /mentors
   def index

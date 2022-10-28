@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
       # custom routes for loggin in and ensuring user is logged in.
       post '/login', to: 'sessions#login'
+      delete '/logout', to: 'sessions#logout'
 
       get '/authorized_user', to:'sessions#show'
       get '/hello', to: 'applications#hello_world'

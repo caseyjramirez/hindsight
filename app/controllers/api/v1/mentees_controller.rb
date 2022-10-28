@@ -1,5 +1,6 @@
 class Api::V1::MenteesController < ApplicationController
   before_action :set_mentee, only: %i[ show update destroy ]
+  skip_before_action :authorized_user, only: [:create]
 
   # GET /mentees
   def index

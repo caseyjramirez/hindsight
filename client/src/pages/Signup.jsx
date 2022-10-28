@@ -39,11 +39,9 @@ function Signup({ setUser }) {
             data = await createMentee(userInfo)
         }
 
-        console.log(data);
-
         if(data.status === 201) {
             setUser(data.data)
-            navigate('/home');
+            navigate('/')
 
         } else {
             console.log('error', data);

@@ -16,6 +16,11 @@ class Api::V1::SessionsController < ApplicationController
        end
     end
 
+    def logout
+        session.delete(:user_id)
+        head :no_content
+    end
+
     def show
         render json: current_user, status: :ok
     end
