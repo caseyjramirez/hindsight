@@ -41,7 +41,7 @@ function Signup({ setUser }) {
 
         if(data.status === 201) {
             setUser(data.data)
-            navigate('/')
+            navigate('/home')
 
         } else {
             console.log('error', data);

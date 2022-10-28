@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MenteeTest < ActiveSupport::TestCase
+class PostingsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

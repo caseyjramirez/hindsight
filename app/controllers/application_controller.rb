@@ -10,14 +10,12 @@ class ApplicationController < ActionController::API
     def hello_world
         session[:count] = (session[:count] || 0) + 1
         render json: { count: session[:count] }
-      end
+    end
 
     # current_user and authorized_user 
     def current_user
-        mentee = Mentee.find_by(id: session[:user_id])
-        mentor = Mentor.find_by(id: session[:user_id])
-        mentee if mentee
-        mentor if mentor
+        user = User.find_by(id: session[:user_id])
+        user
     end
 
     def authorized_user

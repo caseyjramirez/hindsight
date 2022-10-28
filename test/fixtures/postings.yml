@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  mentor: 1
-  mentee: 1
+  user: one
   topic: one
   community: one
   description: MyString
+  isFilled: false
 
 two:
-  mentor: 1
-  mentee: 1
+  user: two
   topic: two
   community: two
   description: MyString
+  isFilled: false

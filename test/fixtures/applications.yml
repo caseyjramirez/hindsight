@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  relationship: one
-  mentee: one
+  posting: one
+  user: one
   description: MyString
   isRejected: false
+  isAccepted: false
 
 two:
-  relationship: two
-  mentee: two
+  posting: two
+  user: two
   description: MyString
   isRejected: false
+  isAccepted: false

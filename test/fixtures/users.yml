@@ -1,21 +1,25 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  user_type: one
   first_name: MyString
   last_name: MyString
   age: 1
   email: MyString
   phone_number: 1
   description: MyString
-  community: one
+  community_id: one
   password_digest: MyString
+  profile_photo: MyString
 
 two:
+  user_type: two
   first_name: MyString
   last_name: MyString
   age: 1
   email: MyString
   phone_number: 1
   description: MyString
-  community: two
+  community_id: two
   password_digest: MyString
+  profile_photo: MyString

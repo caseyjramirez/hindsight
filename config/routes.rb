@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :applications
-      resources :mentors, only: [:create, :index, :show]
-      resources :mentees, only: [:create]
-      resources :relationships, only: [:show, :create]
-      resources :topics, only: [:index]
       resources :communities, only: [:show]
+      resources :topics, only: [:index]
+      resources :users
+      resources :user_types
+      resources :postings
+      resources :applications
+      resources :relationships
 
       # custom routes for loggin in and ensuring user is logged in.
       post '/login', to: 'sessions#login'
