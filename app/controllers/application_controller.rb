@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
     # before_action
-    before_action :authorized_user
+    # before_action :authorized_user
 
 
     def hello_world

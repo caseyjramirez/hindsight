@@ -81,5 +81,49 @@ end
     )
 end
 
+puts "Creating Test Mentor profile ⏳"
+
+casey = User.create(
+    user_type_id: mentor.id,
+    first_name: 'Casey',
+    last_name: 'Ramirez',
+    age: 24,
+    email: 'test',
+    description: 'If it dont make dollas it dont make sense',
+    phone_number: 1112223333,
+    community_id: c1.id,
+    password: "1234",
+)
+
+5.times do
+    Relationship.create!(
+        mentor_id: casey.id,
+        mentee_id: User.where(user_type_id: mentee.id).sample.id,
+        topic_id: Topic.all.sample.id,
+        community_id: c1.id,
+        description: Faker::Quote.most_interesting_man_in_the_world
+    )
+end
+
+3.times do
+    Posting.create(
+        user_id: casey.id,
+        topic_id: Topic.all.sample.id,
+        community_id: c1.id,
+        description: Faker::Quote.most_interesting_man_in_the_world,
+        isFilled: false,
+    )
+end
+
+10.times do
+    Application.create(
+        posting_id: Posting.where(user_id: casey.id).sample.id,
+        user_id: User.where(user_type_id: mentee.id).sample.id,
+        description: Faker::Quote.most_interesting_man_in_the_world,
+        isRejected: false,
+        isAccepted: false,
+    )
+end
+
 
 puts "Seeding Complete ⏳"

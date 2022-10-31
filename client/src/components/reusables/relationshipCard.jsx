@@ -11,7 +11,7 @@ function RelationshipCard({ data, onClick }) {
             <div className="modal-break black mb-10"></div>
             <div className="container">
                 <div className='flex space-between mb-5'>
-                    <h1 onClick={() => onClick(id)}>{renderTitle()}</h1>
+                    <h1 onClick={() => onClick(id)}>{mentee.first_name} {mentee.last_name}</h1>
                     <div>
                         <div className='tag'>
                             <p>Established</p>

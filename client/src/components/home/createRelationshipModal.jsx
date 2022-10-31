@@ -53,7 +53,7 @@ function CreateRelationshipModal({ isOpen, onClose, createNewRelationship, mento
                 <div className="generic-input mb-10">
                     <h3>Topic</h3>
                     <select onChange={setTopic}>
-                        <option selected disabled hidden>Select a Topic</option>
+                        <option defaultValue disabled hidden>Select a Topic</option>
                         {topics.map(topic => {
                                 return <option key={topic.id} value={topic.id}>{topic.name}</option>
                         })}
